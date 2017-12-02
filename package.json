@@ -5,7 +5,6 @@
   "main": "lib/whitespace.umd.js",
   "module": "lib/whitespace.es.js",
   "jsnext:main": "lib/whitespace.es.js",
-  "types": "whitespace.d.ts",
   "scripts": {
     "build-es": "rollup src/whitespace.js --o lib/whitespace.es.js --f es",
     "build-umd": "rollup src/whitespace.js --o lib/whitespace.umd.js -f umd --name 'collapse'",
