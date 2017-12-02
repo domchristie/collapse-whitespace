@@ -9,7 +9,7 @@
     "build-es": "rollup src/whitespace.js --o lib/whitespace.es.js --f es",
     "build-umd": "rollup src/whitespace.js --o lib/whitespace.umd.js -f umd --name 'collapse'",
     "build": "npm run build-es && npm run build-umd",
-    "prepublish": "npm run build",
+    "prepare": "npm run build",
     "test": "standard ./src/**/*.js && echo 'Open test.html in your browser to run tests.'"
   },
   "keywords": [
