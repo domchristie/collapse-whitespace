@@ -1,67 +1,16 @@
-'use strict'
-
-var voidElements = require('void-elements')
-Object.keys(voidElements).forEach(function (name) {
-  voidElements[name.toUpperCase()] = 1
-})
-
-var blockElements = {}
-require('block-elements').forEach(function (name) {
-  blockElements[name.toUpperCase()] = 1
-})
-
 /**
- * isBlockElem(node) determines if the given node is a block element.
+ * whitespace(options) removes extraneous whitespace from an
+ * the given element.
  *
- * @param {Node} node
- * @return {Boolean}
+ * @param {Object} options
  */
-function isBlockElem (node) {
-  return !!(node && blockElements[node.nodeName])
-}
+function collapseWhitespace (options) {
+  var elem = options.elem
+  var isBlock = options.isBlock
+  var isVoid = options.isVoid
+  var isPre = options.isPre
 
-/**
- * isPreElem(node) determines if the given node is a PRE element.
- *
- * Whitespace for PRE elements are not collapsed.
- *
- * @param {Node} node
- * @return {Boolean}
- */
-function isPreElem (node) {
-  return node.nodeName === 'PRE';
-}
-
-/**
- * isVoid(node) determines if the given node is a void element.
- *
- * @param {Node} node
- * @return {Boolean}
- */
-function isVoid (node) {
-  return !!(node && voidElements[node.nodeName])
-}
-
-/**
- * whitespace(elem [, isBlock]) removes extraneous whitespace from an
- * the given element. The function isBlock may optionally be passed in
- * to determine whether or not an element is a block element; if none
- * is provided, defaults to using the list of block elements provided
- * by the `block-elements` module.
- *
- * @param {Node} elem
- * @param {Function} blockTest
- */
-function collapseWhitespace (elem, isBlock, isPre) {
-  if (!elem.firstChild || elem.nodeName === 'PRE') return
-
-  if (typeof isBlock !== 'function') {
-    isBlock = isBlockElem
-  }
-
-  if (typeof isPre !== 'function') {
-    isPre = isPreElem;
-  }
+  if (!elem.firstChild || isPre(elem)) return
 
   var prevText = null
   var prevVoid = false

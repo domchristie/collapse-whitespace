@@ -30,9 +30,5 @@
     "browserify": "^10.2.6",
     "standard": "^4.5.3",
     "uglify-js": "^2.4.23"
-  },
-  "dependencies": {
-    "block-elements": "^1.0.0",
-    "void-elements": "^2.0.1"
   }
 }
