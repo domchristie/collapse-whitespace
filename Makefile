@@ -1,4 +1,3 @@
-babel := ./node_modules/.bin/babel
 browserify := ./node_modules/.bin/browserify
 uglify := ./node_modules/.bin/uglifyjs
 standard := ./node_modules/.bin/standard
@@ -11,7 +10,7 @@ whitespace.min.js: $(LIB)
 
 lib/%.js: src/%.js
 	@mkdir -p $(@D)
-	$(babel) --loose all $< -o $@
+	@cp $< $@
 
 lint:
 	$(standard) $(SRC)
