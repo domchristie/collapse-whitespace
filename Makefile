@@ -6,11 +6,14 @@ SRC = $(wildcard src/*.js)
 LIB = $(SRC:src/%.js=lib/%.js)
 
 whitespace.min.js: $(LIB)
-	$(browserify) lib/whitespace.js -s collapse | $(uglify) -m > $@
+	$(browserify) lib/whitespace.cjs.js -s collapse | $(uglify) -m > $@
 
 lib/%.js: src/%.js
 	@mkdir -p $(@D)
-	@cp $< $@
+	@cp $< lib/whitespace.cjs.js
+	@echo "\nmodule.exports = collapseWhitespace" >> lib/whitespace.cjs.js
+	@cp $< lib/whitespace.es.js
+	@echo "\nexport default collapseWhitespace" >> lib/whitespace.es.js
 
 lint:
 	$(standard) $(SRC)
