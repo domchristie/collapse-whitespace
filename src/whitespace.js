@@ -1,24 +1,23 @@
 /**
- * whitespace(options) removes extraneous whitespace from an
- * the given element.
+ * whitespace(options) removes extraneous whitespace from an the given element.
  *
  * @param {Object} options
  */
 function collapseWhitespace (options) {
-  var elem = options.elem
+  var element = options.element
   var isBlock = options.isBlock
   var isVoid = options.isVoid
   var isPre = options.isPre
 
-  if (!elem.firstChild || isPre(elem)) return
+  if (!element.firstChild || isPre(element)) return
 
   var prevText = null
   var prevVoid = false
 
   var prev = null
-  var node = next(prev, elem, isPre)
+  var node = next(prev, element, isPre)
 
-  while (node !== elem) {
+  while (node !== element) {
     if (node.nodeType === 3 || node.nodeType === 4) { // Node.TEXT_NODE or Node.CDATA_SECTION_NODE
       var text = node.data.replace(/[ \r\n\t]+/g, ' ')
 
