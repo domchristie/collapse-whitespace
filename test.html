@@ -157,8 +157,35 @@ surrounded by whitespace</pre></div>
     if (tests.length !== results.length)
       err('The number of tests is not equal to the number of results.')
 
+    function isBlock (node) {
+      return [
+        'address', 'article', 'aside', 'audio', 'blockquote', 'body', 'canvas',
+        'center', 'dd', 'dir', 'div', 'dl', 'dt', 'fieldset', 'figcaption',
+        'figure', 'footer', 'form', 'frameset', 'h1', 'h2', 'h3', 'h4', 'h5',
+        'h6', 'header', 'hgroup', 'hr', 'html', 'isindex', 'li', 'main', 'menu',
+        'nav', 'noframes', 'noscript', 'ol', 'output', 'p', 'pre', 'section',
+        'table', 'tbody', 'td', 'tfoot', 'th', 'thead', 'tr', 'ul'
+      ].indexOf(node.nodeName.toLowerCase()) !== -1
+    }
+
+    function isVoid (node) {
+      return [
+        'area', 'base', 'br', 'col', 'command', 'embed', 'hr', 'img', 'input',
+        'keygen', 'link', 'meta', 'param', 'source', 'track', 'wbr'
+      ].indexOf(node.nodeName.toLowerCase()) !== -1
+    }
+
+    function isPre (node) {
+      return node.nodeName === 'PRE'
+    }
+
     for (var i = 0; i < tests.length; i += 1) {
-      collapse(tests[i])
+      collapse({
+        elem: tests[i],
+        isBlock: isBlock,
+        isVoid: isVoid,
+        isPre: isPre
+      })
       if (tests[i].innerHTML !== results[i].innerHTML)
         err('"' + tests[i].innerHTML + '" should be "' + results[i].innerHTML + '"')
     }
