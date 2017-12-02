@@ -1,11 +1,11 @@
 'use strict'
 
-const voidElements = require('void-elements')
+var voidElements = require('void-elements')
 Object.keys(voidElements).forEach(function (name) {
   voidElements[name.toUpperCase()] = 1
 })
 
-const blockElements = {}
+var blockElements = {}
 require('block-elements').forEach(function (name) {
   blockElements[name.toUpperCase()] = 1
 })
@@ -63,15 +63,15 @@ function collapseWhitespace (elem, isBlock, isPre) {
     isPre = isPreElem;
   }
 
-  let prevText = null
-  let prevVoid = false
+  var prevText = null
+  var prevVoid = false
 
-  let prev = null
-  let node = next(prev, elem, isPre)
+  var prev = null
+  var node = next(prev, elem, isPre)
 
   while (node !== elem) {
     if (node.nodeType === 3 || node.nodeType === 4) { // Node.TEXT_NODE or Node.CDATA_SECTION_NODE
-      let text = node.data.replace(/[ \r\n\t]+/g, ' ')
+      var text = node.data.replace(/[ \r\n\t]+/g, ' ')
 
       if ((!prevText || / $/.test(prevText.data)) &&
           !prevVoid && text[0] === ' ') {
@@ -105,7 +105,7 @@ function collapseWhitespace (elem, isBlock, isPre) {
       continue
     }
 
-    let nextNode = next(prev, node, isPre)
+    var nextNode = next(prev, node, isPre)
     prev = node
     node = nextNode
   }
@@ -126,7 +126,7 @@ function collapseWhitespace (elem, isBlock, isPre) {
  * @return {Node} node
  */
 function remove (node) {
-  let next = node.nextSibling || node.parentNode
+  var next = node.nextSibling || node.parentNode
 
   node.parentNode.removeChild(node)
 
