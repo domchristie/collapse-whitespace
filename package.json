@@ -2,12 +2,12 @@
   "name": "collapse-whitespace",
   "version": "1.1.6",
   "description": "Remove unnecessary whitespace from an element.",
-  "main": "lib/whitespace.umd.js",
-  "module": "lib/whitespace.es.js",
-  "jsnext:main": "lib/whitespace.es.js",
+  "main": "lib/collapse-whitespace.umd.js",
+  "module": "lib/collapse-whitespace.es.js",
+  "jsnext:main": "lib/collapse-whitespace.es.js",
   "scripts": {
-    "build-es": "rollup src/whitespace.js --o lib/whitespace.es.js --f es",
-    "build-umd": "rollup src/whitespace.js --o lib/whitespace.umd.js -f umd --name 'collapse'",
+    "build-es": "rollup src/collapse-whitespace.js --o lib/collapse-whitespace.es.js --f es",
+    "build-umd": "rollup src/collapse-whitespace.js --o lib/collapse-whitespace.umd.js -f umd --name 'collapseWhitespace'",
     "build": "npm run build-es && npm run build-umd",
     "prepare": "npm run build",
     "test": "standard ./src/**/*.js && echo 'Open test.html in your browser to run tests.'"
