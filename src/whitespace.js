@@ -7,7 +7,9 @@ function collapseWhitespace (options) {
   var element = options.element
   var isBlock = options.isBlock
   var isVoid = options.isVoid
-  var isPre = options.isPre
+  var isPre = options.isPre || function (node) {
+    return node.nodeName === 'PRE'
+  }
 
   if (!element.firstChild || isPre(element)) return
 

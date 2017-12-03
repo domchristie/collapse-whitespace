@@ -175,16 +175,11 @@ surrounded by whitespace</pre></div>
       ].indexOf(node.nodeName.toLowerCase()) !== -1
     }
 
-    function isPre (node) {
-      return node.nodeName === 'PRE'
-    }
-
     for (var i = 0; i < tests.length; i += 1) {
       collapse({
         element: tests[i],
         isBlock: isBlock,
-        isVoid: isVoid,
-        isPre: isPre
+        isVoid: isVoid
       })
       if (tests[i].innerHTML !== results[i].innerHTML)
         err('"' + tests[i].innerHTML + '" should be "' + results[i].innerHTML + '"')
