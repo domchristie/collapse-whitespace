@@ -5,11 +5,16 @@
   "main": "lib/collapse-whitespace.umd.js",
   "module": "lib/collapse-whitespace.es.js",
   "jsnext:main": "lib/collapse-whitespace.es.js",
+  "files": [
+    "lib",
+    "dist"
+  ],
   "scripts": {
     "build-es": "rollup src/collapse-whitespace.js --o lib/collapse-whitespace.es.js --f es",
     "build-umd": "rollup src/collapse-whitespace.js --o lib/collapse-whitespace.umd.js -f umd --name 'collapseWhitespace'",
     "build": "npm run build-es && npm run build-umd",
     "prepare": "npm run build",
+    "prepublish": "npm run prepare",
     "test": "standard ./src/**/*.js && echo 'Open test.html in your browser to run tests.'"
   },
   "keywords": [
