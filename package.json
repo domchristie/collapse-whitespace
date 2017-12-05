@@ -6,8 +6,7 @@
   "module": "lib/collapse-whitespace.es.js",
   "jsnext:main": "lib/collapse-whitespace.es.js",
   "files": [
-    "lib",
-    "dist"
+    "lib"
   ],
   "scripts": {
     "build-es": "rollup src/collapse-whitespace.js --o lib/collapse-whitespace.es.js --f es",
